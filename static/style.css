@@ -1,0 +1,96 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto; /* Horizontal centering within the body */
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#sport-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+#sport-list label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+#sport-list input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+select[multiple] {
+    height: 100px; /* Adjust as needed */
+}
+
+#team-dropdown-container {
+    margin-top: 20px;
+}
+
+.team-section {
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#selected-info {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#selected-info h2 {
+    margin-bottom: 10px;
+}
+
+#selected-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#selected-info ul ul {
+    margin-left: 15px;
+}
+
+#selected-info li {
+    margin-bottom: 8px;
+}

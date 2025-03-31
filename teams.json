@@ -1,0 +1,142 @@
+{
+    "Jalkapallo": {
+      "Veikkausliiga": [
+        "AC Oulu",
+        "FC Haka",
+        "FC Inter",
+        "FF Jaro",
+        "IF Gnistan",
+        "HJK",
+        "IFK Mariehamn",
+        "Ilves",
+        "KTP",
+        "KuPS",
+        "SJK",
+        "VPS"
+      ],
+      "Kansallinen Liiga Naiset": [
+        "HPS",
+        "JYPK",
+        "PK-35 Vantaa",        
+        "HJK",
+        "Åland United",
+        "KUPS",
+        "VIFK",
+        "PK-35"
+      ]
+    },
+    "Jääkiekko": {
+      "Liiga": [
+        "Lukko",	
+        "Ilves",
+        "KalPa",
+        "HIFK",
+        "SaiPa",
+        "KooKoo",
+        "Ässät",
+        "Kiekko-Espoo",
+        "Tappara",
+        "HPK",
+        "Sport",
+        "TPS",
+        "Kärpät",
+        "JYP",
+        "Pelicans",	
+        "Jukurit"
+      ],     
+      "Auroraliiga": [
+        "HIFK",
+        "HPK",
+        "Ilves",
+        "KalPa",
+        "K-Espoo",
+        "Team Kuortane",
+        "Kärpät",
+        "RoKi",
+        "TPS"
+      ]
+    },
+    "Koripallo": {
+      "Korisliiga": [
+        "BC Nokia",
+        "Bisons Loimaa",
+        "Helsinki Seagulls",
+        "Kataja Basket",
+        "Karhu Basket",
+        "Kobrat",
+        "Korihait",
+        "Kouvot",
+        "KTP-Basket",
+        "Salon Vilpas",
+        "Tampereen Pyrintö",
+        "Tapiolan Honka"
+    ],     
+      "Naisten Korisliiga": [
+        "BC Nokia",
+        "Espoo Basket Team",
+        "Forssan Alku",
+        "HBA-Märsky",
+        "Peli-Karhut",
+        "Kouvottaret",
+        "Torpan Pojat",
+        "Vimpelin Veto",
+        "Tampereen Pyrintö",
+        "Tapiolan Honka"
+      ]
+    },    
+    "Salibandy": {
+      "F-liiga": [
+        "Oilers",
+        "Indians",
+        "Classic",
+        "Nokian KrP",
+        "TPS",
+        "FBC Turku",
+        "SPV",
+        "Happee",
+        "LASB",
+        "OLS",
+        "Jymy",
+        "EräViikingit"
+      ],     
+      "F-liiga Naiset": [
+        "SSRA",
+        "Koovee",
+        "Classic",
+        "SB-Pro",
+        "TPS",
+        "FBC Loisto",
+        "SaiPa",
+        "ÅIF",
+        "PSS",
+        "O2-Jyväskylä",
+        "Welhot",
+        "EräViikingit"
+      ]
+    },
+    "Lentopallo": {
+      "Mestaruusliiga": [
+        "Hurrikaani",
+        "KyKy",
+        "Savo",
+        "Tiikerit",
+        "Loimu",
+        "VaLePa",
+        "Akaa",
+        "Karelian Hurmos",
+        "TUTO"
+      ],
+      "Mestaruusliiga Naiset": [
+        "Arctic Volley",
+        "Hämeenlinnan Lentopallokerho",
+        "JymyVolley",
+        "LiigaPloki",
+        "LP Kangasala",
+        "LP Viesti",
+        "LP-Vampula",
+        "Oriveden Ponnistus",
+        "Puijo Wolley",
+        "Pölkky Kuusamo"
+      ]    
+    }
+}

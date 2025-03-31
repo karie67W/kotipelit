@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulevat kotipelit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .sport-section {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+        }
+        .sport-section h2 {
+            margin-top: 0;
+        }
+        .category-section {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Suosikkijoukkeesi tulevat kotipelit</h1>
+
+        {% if next_home_games %}
+            {% for sport, categories in next_home_games.items() %}
+                <div class="sport-section">
+                    <h2>{{ sport.capitalize() }}</h2>
+                    {% for category, teams in categories.items() %}
+                        <div class="category-section">
+                            <h3>{{ category.capitalize() }}</h3>
+                            <ul>
+                                {% for team, game_info in teams.items() %}
+                                    <li>{{ team }}:
+                                        {% if game_info and game_info.opponent %}
+                                            vs. {{ game_info.opponent }} on {{ game_info.date }}
+                                        {% elif game_info and game_info.opponent == 'Ei tulevia kotipelejä' %}
+                                            Ei tulevia kotipelejä
+                                        {% else %}
+                                            Error fetching game info
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                    {% if not categories %}
+                        <ul>
+                            {% for team, game_info in next_home_games[sport].items() %}
+                                <li>{{ team }}:
+                                    {% if game_info and game_info.opponent %}
+                                        vs. {{ game_info.opponent }} on {{ game_info.date }}
+                                    {% elif game_info and game_info.opponent == 'Ei tulevia kotipelejä' %}
+                                        Ei tulevia kotipelejä
+                                    {% else %}
+                                        Error fetching game info
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Ei tulevia kotipelejä valitsemillasi joukkueilla.</p>
+        {% endif %}
+
+        <p style="margin-top: 20px;"><a href="{{ url_for('index') }}">Takaisin valintaan</a></p>
+    </div>
+</body>
+</html>

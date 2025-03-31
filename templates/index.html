@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suosikkilajit ja joukkueet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .team-section-container {
+            display: flex;
+            gap: 20px;
+        }
+        .team-section {
+            flex: 1;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .team-section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .home-games-link {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .home-games-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Valitse suosikkilajisi ja suosikkijoukkueesi</h1>
+
+        <form method="POST" action="/">
+            <div class="selection-group">
+                <label>Valitse suosikkiurheilulajit:</label>
+                <div id="sport-list">
+                    {% for sport in available_sports %}
+                        <input type="checkbox" name="sport" value="{{ sport }}" {% if sport in selected_sports %}checked{% endif %}> {{ sport }}<br>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="team-dropdown-container" style="margin-top: 20px;">
+                <div id="sport-team-sections">
+                    {% for sport, teams_info in teams_data.items() %}
+                        {% if sport in selected_sports %}
+                            <h3>{{ sport.capitalize() }}, valitse suosikkijoukkueesi:</h3>
+                            {% if teams_info is mapping %}
+                                <div class="team-section-container">
+                                    {% for category, teams in teams_info.items() %}
+                                        <div class="team-section">
+                                            <h4>{{ category.capitalize() }} joukkueet:</h4>
+                                            {% for team in teams %}
+                                                <input type="checkbox" name="team_{{ sport }}_{{ category }}" value="{{ team }}"
+                                                       {% if sport in selected_teams_by_sport and category in selected_teams_by_sport[sport] and team in selected_teams_by_sport[sport][category] %}checked{% endif %}> {{ team }}<br>
+                                            {% endfor %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% elif teams_info is iterable %}
+                                <div class="team-section">
+                                    {% for team in teams_info %}
+                                        <input type="checkbox" name="team_{{ sport }}" value="{{ team }}" {% if sport in selected_teams_by_sport and team in selected_teams_by_sport[sport] %}checked{% endif %}> {{ team }}<br>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" style="margin-top: 15px;">Valitse</button>
+        </form>
+
+        <div id="selected-info" style="margin-top: 20px;">
+            {% if selected_sports %}
+                <h2>Valintasi:</h2>
+                <ul>
+                    {% for sport in selected_sports %}
+                        <li>{{ sport.capitalize() }}:
+                            {% if sport in selected_teams_by_sport %}
+                                {% if selected_teams_by_sport[sport] is mapping %}
+                                    <ul>
+                                        {% for category, teams in selected_teams_by_sport[sport].items() %}
+                                            <li>{{ category.capitalize() }}:
+                                                <ul>
+                                                    {% for team in teams %}
+                                                        <li>{{ team }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% elif selected_teams_by_sport[sport] is iterable %}
+                                    <ul>
+                                        {% for team in selected_teams_by_sport[sport] %}
+                                            <li>{{ team }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            {% else %}
+                                No teams selected.
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ url_for('home_games_page', sport=selected_sports, teams=selected_teams_by_sport|tojson) }}" class="home-games-link">Näytä tulevat kotipelit</a>
+            {% else %}
+                <p>Ei valittua urheilulajia.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
