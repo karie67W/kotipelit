@@ -8,7 +8,7 @@ from dateutil import parser
 app = Flask(__name__)
 
 # MongoDB Configuration
-client = MongoClient("mongodb+srv://garde:LetstestStuff_25@cluster1.94yvjui.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1")
+client = MongoClient("mongodb+srv://<username>:<PASSWORD>@cluster1.94yvjui.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1")
 db = client["otteluohjelma"]
 games_collection = db["otteluohjelma"]
 
